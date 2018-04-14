@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/cardview_height"
+    android:id="@+id/postCard"
+    android:fitsSystemWindows="true">
+
+    <FrameLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <ImageView
+            android:id="@+id/imageCard"
+            android:layout_height="@dimen/cardview_height"
+            android:layout_width="match_parent" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="bottom"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/titleCard"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:textColor="@color/colorPrimary"
+                android:textSize="22sp"/>
+
+            <TextView
+                android:id="@+id/authorCard"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</android.support.v7.widget.CardView>
