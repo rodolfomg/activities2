@@ -40,11 +40,8 @@ public class PostAdapterRV extends RecyclerView.Adapter<PostAdapterRV.PostViewHo
     * */
     @Override
     public PostViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Log.v("recycler", "Creating a card");
-        Log.v("recycler", "resource: "+resource);
         View card = LayoutInflater.from(parent.getContext()).inflate(resource, parent, false);
 
-        Log.v("recycler", "Creating a holder");
         return new PostViewHolder(card);
     }
 
@@ -55,12 +52,9 @@ public class PostAdapterRV extends RecyclerView.Adapter<PostAdapterRV.PostViewHo
     @Override
     public void onBindViewHolder(PostViewHolder postHolder, int position) {
         Post post = posts.get(position);
-        Log.v("recycler", "Post pos: "+position+"\ttitle: "+post.getTitle()+"\tauthor: "+post.getAuthor());
 
-        Log.v("recycler", "Setting postHolder");
         postHolder.titleCard.setText(post.getTitle());
         postHolder.authorCard.setText(post.getAuthor());
-        Log.v("recycler", "postHolder setted");
     }
 
     /*

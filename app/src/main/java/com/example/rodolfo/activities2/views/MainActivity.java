@@ -39,11 +39,8 @@ public class MainActivity extends AppCompatActivity {
         postList.setLayoutManager(manager);
 
         // Set Adapter -> postList
-        Log.v("recycler", "card view: "+R.layout.cardview_post);
         PostAdapterRV postAdapter =
                 new PostAdapterRV(getPosts(), R.layout.cardview_post, this);
-
-        Log.v("recycler", "postAdapter: "+postAdapter.toString());
 
         postList.setAdapter(postAdapter);
     }
