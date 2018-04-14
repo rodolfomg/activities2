@@ -1,7 +1,12 @@
 package com.example.rodolfo.activities2.adapters;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
+import android.content.Intent;
+import android.os.Build;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Explode;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.rodolfo.activities2.PostActivity;
 import com.example.rodolfo.activities2.R;
 import com.example.rodolfo.activities2.models.Post;
 
@@ -23,7 +29,7 @@ public class PostAdapterRV extends RecyclerView.Adapter<PostAdapterRV.PostViewHo
     private int resource;           // Layout de nuestra Card
     private Activity activity;      // Actividad donde estara nuestro RV
 
-    /*
+    /**
     *  Constructor
     * */
     public PostAdapterRV(ArrayList<Post> posts, int resource, Activity activity) {
@@ -33,7 +39,7 @@ public class PostAdapterRV extends RecyclerView.Adapter<PostAdapterRV.PostViewHo
     }
 
 
-    /*
+    /**
     *  Crea las cards que usaremos en nuestro Recycler View
     *  a partir e nuestro card_layout (resource) y el parent
     *  y la asigna a un PostHolder para modificar sus elementos
@@ -45,7 +51,7 @@ public class PostAdapterRV extends RecyclerView.Adapter<PostAdapterRV.PostViewHo
         return new PostViewHolder(card);
     }
 
-    /*
+    /**
     *  Utiliza un objeto postHolder para hacer un update de los
     *  datos de un post y mostrarlos en la Card
     * */
@@ -55,9 +61,29 @@ public class PostAdapterRV extends RecyclerView.Adapter<PostAdapterRV.PostViewHo
 
         postHolder.titleCard.setText(post.getTitle());
         postHolder.authorCard.setText(post.getAuthor());
+
+        postHolder.imageCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, PostActivity.class);
+
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    Explode explode = new Explode();
+                    explode.setDuration(1000);
+                    activity.getWindow().setExitTransition(explode);
+                    activity.startActivity(intent,
+                            ActivityOptionsCompat.makeSceneTransitionAnimation(
+                                activity, view, ""
+                            ).toBundle());
+                }
+                else {
+                    activity.startActivity(intent);
+                }
+            }
+        });
     }
 
-    /*
+    /**
     *  Regresa la cantidad de post en nuestro Recycler View
     * */
     @Override
@@ -65,7 +91,7 @@ public class PostAdapterRV extends RecyclerView.Adapter<PostAdapterRV.PostViewHo
         return posts.size();
     }
 
-    /*
+    /**
     *  Clase: PostViewHolder
     *   Nos ayuda a manipular los elementos de nuestras Cards
     *   de una forma mas sencilla. Cada objeto PostViewHolder
