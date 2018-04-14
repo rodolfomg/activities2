@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import com.example.rodolfo.activities2.R;
 import com.example.rodolfo.activities2.adapters.PostAdapterRV;
@@ -26,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(this, user.getUsername(), Toast.LENGTH_LONG).show();
 
+        // ActionBar
+        showToolbar(getResources().getString(R.string.main_title), false);
 
-        /*
-        *   Recycler View
-        * */
+        // Recycler View
         RecyclerView postList = findViewById(R.id.post_recycler_view);
 
         // Set LinearLayoutManager -> postList
@@ -43,6 +44,13 @@ public class MainActivity extends AppCompatActivity {
                 new PostAdapterRV(getPosts(), R.layout.cardview_post, this);
 
         postList.setAdapter(postAdapter);
+    }
+
+    private void showToolbar(String title, boolean upButton) {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(title);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
     }
 
     public ArrayList<Post> getPosts() {

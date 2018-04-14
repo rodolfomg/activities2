@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context="com.example.rodolfo.activities2.views.MainActivity">
 
+    <include layout="@layout/actionbar_toolbar" />
+
     <LinearLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"
