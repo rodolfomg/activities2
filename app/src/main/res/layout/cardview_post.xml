@@ -14,7 +14,8 @@
         <ImageView
             android:id="@+id/imageCard"
             android:layout_height="@dimen/cardview_height"
-            android:layout_width="match_parent" />
+            android:layout_width="match_parent"
+            android:background="@drawable/city"/>
 
         <LinearLayout
             android:layout_height="wrap_content"
@@ -29,14 +30,17 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:textColor="@color/white"
-                android:textSize="24sp"/>
+                android:textSize="24sp"
+                android:text="Title"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/authorCard"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:textColor="@color/white"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:text="Author"/>
 
         </LinearLayout>
 
